@@ -67,7 +67,7 @@
                           var subtotal = row.cantidad * parseFloat(row.precio_unit);
                               newRow.innerHTML = `
                                 <td class="item" style="text-align: left;">${row.cantidad}</td>
-                                <td class="item" style="text-align: right;">${row.descripcion} ${parseFloat(row.precio_unit).toFixed(2)}</td>
+                                <td class="item" style="text-align: left;">${row.descripcion} ${parseFloat(row.precio_unit).toFixed(2)}</td>
                                 <td class="item" style="text-align: right;">${subtotal.toFixed(2)}</td>
                             `;
                             tablaBody.appendChild(newRow);
