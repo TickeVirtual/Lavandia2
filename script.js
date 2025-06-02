@@ -23,11 +23,11 @@
                   var total_por_pagar = params.has('total_por_pagar') ? params.get('total_por_pagar') : "0";
                   var estado = params.has('estado') ? params.get('estado') : "PAGADO";
                   var total_prendas = params.has('total_prendas') ? params.get('total_prendas') : "10";      
-                  var cantidades = params.has('cantidades') ? params.get('cantidades') : "1";
-                  var descripciones = params.has('servicios') ? params.get('servicios') : "ROPA AL SECO";
+                  var cantidades = params.has('cantidades') ? params.get('cantidades') : "10";
+                  var descripciones = params.has('servicios') ? params.get('servicios') : "AL AGUA: SABANAS 2 PLZ Ploma cuadritos blancos basement home";
                   var detalle = params.has('detalles') ? params.get('detalles') : "TERNO";
                   var p_units = params.has('p_unit') ? params.get('p_unit') : "15";
-                  var subtotal = params.has('subtotal') ? params.get('subtotal') : "15";
+                  var subtotal = params.has('subtotal') ? params.get('subtotal') : "150";
                   
                   //Formato de 2 decimales
                   //total = parseFloat(total).toLocaleString('es-ES', { minimumFractionDigits: 2 });
@@ -75,7 +75,9 @@
                                 <td class="itemtab" style="text-align: right; font-size: 0.5mm;">
                                 ${subtotal.toFixed(2)}
                                 </td>
+
                             `;
+
                             tablaBody.appendChild(newRow);
                               });
 
