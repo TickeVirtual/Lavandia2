@@ -64,7 +64,8 @@
                           var newRow = document.createElement("tr");
                               newRow.className = "table-item";
                                       // Calcula el subtotal para el servicio actual
-                          var subtotal = row.cantidad * parseFloat(row.precio_unit);
+                          var subtotalCalculado = row.cantidad * parseFloat(row.precio_unit);
+                          var subtotal = redondearPersonalizado(subtotalCalculado);
                               newRow.innerHTML = `
                                 <td class="itemtab" style="text-align: left; font-size: 0.5mm;">
                                 ${row.cantidad}
@@ -73,8 +74,8 @@
                                 ${row.descripcion} ${parseFloat(row.precio_unit).toFixed(2)}
                                 </td>
                                 <td class="itemtab" style="text-align: right; font-size: 0.5mm;">
-                                ${subtotal.toFixed(2)}
-                                </td>
+                                ${subtotal}
+                                </td>                             
 
                             `;
 
@@ -201,8 +202,8 @@
 
         sendMessageButton.disabled = true; // Deshabilitar botón mientras se envía
 
-        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/lavandiasanborjainstancia"; // Cambia NOMBRE_INSTANCIA
-        const apikey = "C343AC87AA49-4A0C-AF93-F2623CBBFCB8"; // Coloca aquí tu API key
+        const url = "https://mensajero-evolution-api.ykf6ye.easypanel.host/message/sendMedia/lavandiasurcoinstancia"; // Cambia NOMBRE_INSTANCIA
+        const apikey = "63F783149485-491F-A852-0EAE47DE2920"; // Coloca aquí tu API key
         const numeroTelefono = `+51${telefono}`; // Coloca el número de teléfono del destinatario
         const longURL = window.location.href; // Obtiene la URL actual
 
@@ -289,16 +290,28 @@
 
      
                           
-                          // Generar código QR desde parámetro 'qr'
-                          document.addEventListener("DOMContentLoaded", function () {
-                            const params = new URLSearchParams(window.location.search);
-                            const qr = params.has('qr') ? params.get('qr') : "sddsd12";
-                          
-                            const qrElement = new QRious({
-                              element: document.getElementById('qr-code'),
-                              value: qr,
-                              size: 100
-                            });
-                          });
+     // Generar código QR desde parámetro 'qr'
+     document.addEventListener("DOMContentLoaded", function () {
+       const params = new URLSearchParams(window.location.search);
+       const qr = params.has('qr') ? params.get('qr') : "sddsd12";
+     
+       const qrElement = new QRious({
+         element: document.getElementById('qr-code'),
+         value: qr,
+         size: 100
+       });
+     });
+// Redondear a la décima más cercana (múltiplos de 0.10)
+function redondearPersonalizado(valor) {
+    let entero = Math.floor(valor); 
+    let decimales = valor - entero;
+
+    // Redondear a la décima más cercana (múltiplos de 0.10)
+    let decima = Math.round(decimales * 10) / 10;
+
+    let resultado = entero + decima;
+    return resultado.toFixed(2);
+}
+
 
                         
