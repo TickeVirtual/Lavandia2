@@ -264,7 +264,7 @@
                 }, 3000);
             } else {
                 console.error('Error en la respuesta:', responseData);
-                statusMessage.textContent = `Error: ${responseData.message || 'Problema desconocido'}`;
+                statusMessage.textContent = `Error: ${responseData.message || 'Parece que el whatsapp no existe'}`;
                 statusMessage.className = 'error';
                 sendMessageButton.disabled = false;
             }
